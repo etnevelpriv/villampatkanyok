@@ -4,7 +4,7 @@ export class ElectricRat implements ElectricRat_Interface {
     atk: number;
     hp: number;
     constructor(name: string, atk: number, hp: number) {
-        if (typeof name != "string" || name.trim() == "") {
+        if (typeof name != "string" || name.trim() == "" || name.length > 50) {
             throw new Error(`A név nincs megfelelően megadva: ${name}`)
         };
         if (typeof atk != "number" || atk == null || atk < 10 || atk > 20) {
@@ -18,6 +18,10 @@ export class ElectricRat implements ElectricRat_Interface {
         this.hp = hp;
     };
     toString() {
-
+        return `Nev: ${this.name}, Tamadasero: ${this.atk}, Eletero: ${this.hp}`
     };
+    toCSV() {
+        // Ezt majd megcsinalom
+    };
+
 };  

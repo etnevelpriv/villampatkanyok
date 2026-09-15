@@ -1,20 +1,27 @@
 import { ElectricRat } from "./models/ElectricRat.class";
 import "../styles/style.css"
+import { displayToast } from "./components/toast";
 const init = function () {
     const rats: ElectricRat[] = [];
     document.getElementById("saveRatButton")?.addEventListener("click", () => {
         const nameInputElement = document.getElementById("nameInput") as HTMLInputElement;
         const name = nameInputElement.value;
         const ratPowerValues = getRatPowerValues();
-        const rat = new ElectricRat(name, ratPowerValues.atk, ratPowerValues.hp);
-        rats.push(rat);
-        console.log(rat.toString())
-        printCards(rats)
+        try {
+            const rat = new ElectricRat(name, ratPowerValues.atk, ratPowerValues.hp);
+            rats.push(rat);
+            console.log(rat.toString())
+            printCards(rats)
+        } catch (err: Error | any) {
+            if (err instanceof Error) {
+                displayToast(err.message, err.name)
+            };
+        };
     });
 };
 const printCards = function (rats: ElectricRat[]) {
     const cardsContainer = document.getElementById("cards");
-    while(cardsContainer?.firstChild) cardsContainer.removeChild(cardsContainer.firstChild);
+    while (cardsContainer?.firstChild) cardsContainer.removeChild(cardsContainer.firstChild);
     rats.forEach((rat: ElectricRat) => {
         const card = document.createElement("div");
         const cardHeader = document.createElement("div")

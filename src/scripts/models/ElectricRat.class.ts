@@ -20,7 +20,7 @@ export class ElectricRat implements ElectricRat_Interface {
     toString() {
         return `Nev: ${this.name}, Tamadasero: ${this.atk}, Eletero: ${this.hp}`
     };
-    toCSV() {
-        // Ezt majd megcsinalom
+    toCSV(id:number) {
+        return `${id};${this.name};${this.atk};${this.hp}\n`
     };
 };

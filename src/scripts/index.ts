@@ -18,6 +18,16 @@ const init = function () {
             };
         };
     });
+    document.getElementById("exportButton")?.addEventListener("click", () => {
+        const csvSzovegElement = document.getElementById("csvSzoveg");
+        let csvSzoveg = "id;nev;atk;hp";
+        let i:number = 0;
+        rats.forEach((rat:ElectricRat) => {
+            csvSzoveg += rat.toCSV(i);
+            i++;
+        });
+        csvSzovegElement!.textContent = csvSzoveg;
+    })
 };
 const printCards = function (rats: ElectricRat[]) {
     const cardsContainer = document.getElementById("cards");

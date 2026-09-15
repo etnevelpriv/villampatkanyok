@@ -98,6 +98,10 @@ body {
             border: 2px solid var(--border-color);
             padding: var(--large-padding);
 
+            .card-title {
+                overflow-wrap: anywhere;
+            }
+
             .card-body {
                 display: flex;
                 flex-direction: row;
@@ -105,10 +109,12 @@ body {
                 gap: 20px;
             }
         }
+
         .card:last-child {
             animation: showCard 0.3s ease;
         }
     }
+
     .toast-container {
         position: absolute;
         z-index: 1000;
@@ -119,22 +125,26 @@ body {
         width: fit-content;
         display: flex;
         flex-direction: column;
+
         .toast {
             background-color: var(--text-color);
             border: 2px solid var(--border-color);
             color: var(--background-color);
             padding: var(--large-padding);
             animation: showToast 0.3s ease-in-out;
-
+            max-width: 300px;
+            overflow-wrap: anywhere;
             .toast-header {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
+
                 .toast-exit {
                     color: var(--background-secondary-color);
                     transition: all 0.3s ease;
                     cursor: pointer;
                 }
+
                 .toast-exit:hover {
                     color: var(--background-color);
                 }
@@ -148,26 +158,31 @@ body {
         transform: translateY(20px);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0px);
         opacity: 1;
     }
 }
+
 @keyframes showToast {
     0% {
         transform: translatex(20px);
         opacity: 0;
     }
+
     100% {
         transform: translatex(0px);
         opacity: 1;
     }
 }
+
 @keyframes hideToast {
     0% {
         transform: translatex(0px);
         opacity: 0;
     }
+
     100% {
         transform: translatex(20px);
         opacity: 1;

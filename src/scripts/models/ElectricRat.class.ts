@@ -23,5 +23,4 @@ export class ElectricRat implements ElectricRat_Interface {
     toCSV() {
         // Ezt majd megcsinalom
     };
-
-};  
+};

@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Villámpatkányok</title>
 </head>
+
 <body>
-  
-  <script src="./src/scripts/index.ts"></script>
+  <div class="container">
+    <form id="newRatForm">
+      <div class="input-group">
+        <label for="name">Patkány neve:</label>
+        <input type="text" name="name" id="nameInput" required placeholder="Ratatouille the Flash">
+      </div>
+      <input type="button" id="saveRatButton" value="Mentés">
+    </form>
+    <div class="card-container" id="cards">
+
+    </div>
+  </div>
+  <script type="module" src="./src/scripts/index.ts"></script>
 </body>
+
 </html>

@@ -106,7 +106,39 @@ body {
             }
         }
         .card:last-child {
-            animation: showCard 0.5s ease;
+            animation: showCard 0.3s ease;
+        }
+    }
+    .toast-container {
+        position: absolute;
+        z-index: 1000;
+        right: 20px;
+        gap: 10px;
+        left: auto;
+        height: 100wh;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        .toast {
+            background-color: var(--text-color);
+            border: 2px solid var(--border-color);
+            color: var(--background-color);
+            padding: var(--large-padding);
+            animation: showToast 0.3s ease-in-out;
+
+            .toast-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .toast-exit {
+                    color: var(--background-secondary-color);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                }
+                .toast-exit:hover {
+                    color: var(--background-color);
+                }
+            }
         }
     }
 }

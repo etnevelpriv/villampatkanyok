@@ -20,7 +20,7 @@ const init = function () {
     });
     document.getElementById("exportButton")?.addEventListener("click", () => {
         const csvSzovegElement = document.getElementById("csvSzoveg");
-        let csvSzoveg = "id;nev;atk;hp";
+        let csvSzoveg = "id;nev;atk;hp\n";
         let i:number = 0;
         rats.forEach((rat:ElectricRat) => {
             csvSzoveg += rat.toCSV(i);

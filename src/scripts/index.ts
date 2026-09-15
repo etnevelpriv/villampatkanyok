@@ -15,18 +15,38 @@ const init = function () {
         } catch (err: Error | any) {
             if (err instanceof Error) {
                 displayToast(err.message, err.name)
-            };
+            } else {
+                throw new Error (err);
+            }
         };
     });
     document.getElementById("exportButton")?.addEventListener("click", () => {
         const csvSzovegElement = document.getElementById("csvSzoveg");
         let csvSzoveg = "id;nev;atk;hp\n";
-        let i:number = 0;
-        rats.forEach((rat:ElectricRat) => {
+        let i: number = 0;
+        rats.forEach((rat: ElectricRat) => {
             csvSzoveg += rat.toCSV(i);
             i++;
         });
         csvSzovegElement!.textContent = csvSzoveg;
+        try {
+            const blob = new Blob([csvSzoveg], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "villamPatkanyok";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+        } catch (err: Error | any) {
+            if (err instanceof Error) {
+                displayToast(err.message, err.name)
+            } else {
+                throw new Error(err);
+            }
+        };
     })
 };
 const printCards = function (rats: ElectricRat[]) {

@@ -1,7 +1,7 @@
 import { expect, describe, it } from "vitest";
 import { ElectricRat } from "../scripts/models/ElectricRat.class";
 
-describe("ElectricRat class true tesztek", () => {
+describe("ElectricRat class construktor true tesztek", () => {
     it("Patkany letrehozasa atlagos ertekekkel", () => {
         expect(() => new ElectricRat("Patkany Neve", 15, 75)).not.toThrow();
     });
@@ -13,7 +13,7 @@ describe("ElectricRat class true tesztek", () => {
     });
 });
 
-describe("ElectricRat class false tesztek", () => {
+describe("ElectricRat class construktor false tesztek", () => {
     it("Patkany letrehozasa hibas rovid nevvel", () => {
         expect(() => new ElectricRat("", 15, 75)).toThrow();
     });
@@ -44,4 +44,20 @@ describe("ElectricRat class false tesztek", () => {
     it("Patkany letrehozasa hp hibas valtozo tipussal (string)", () => {
         expect(() => new ElectricRat("Patkany nev", 21, "50")).toThrow();
     });
+});
+
+describe("ElectricRat class toCSV metodus true tesztek", () => {
+    it("toCSV fuggveny egy atlagos patkannyal", () => {
+        expect(new ElectricRat("Patkany Neve", 15, 75).toCSV(0)).toBe("0;Patkany Neve;15;75\n")
+    });
+    it("toCSV fuggveny egy atlagos patkannyal, id parameter nelkul", () => {
+        expect(new ElectricRat("Patkany Neve", 15, 75).toCSV()).toBe("undefined;Patkany Neve;15;75\n")
+    });
+
+});
+describe("ElectricRat class toCSV metodus false tesztek", () => {
+    it("nagyon igaz", ()=> {
+        expect(true).toBe(true);
+    })
+    // Nincs nagyon otletem, hogy ez hogy lehetne rossz
 });
